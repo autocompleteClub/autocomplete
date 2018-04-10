@@ -1,0 +1,21 @@
+{
+  "name": "autocomplete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "node server.js",
+    "parsetxt": "node db/textParser.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
