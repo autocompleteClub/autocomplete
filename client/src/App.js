@@ -1,37 +1,51 @@
 import React, { Component } from 'react';
-
-import logo from './logo.svg';
+import InputForm from './InputForm';
 
 import './App.css';
 
 class App extends Component {
-  state = {
-    response: ''
+  constructor(props){
+    super(props)
+    this.state = {
+    words: [],
+    value: '',
+    foo:{}
   };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  
 
   componentDidMount() {
     this.callApi()
-      .then(res => this.setState({ response: res.express }))
+      .then(res => this.setState({ words: res.express }))
       .catch(err => console.log(err));
   }
 
   callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
+    const words = await fetch('/api/hello');
+    const body = await words.json();
 
-    if (response.status !== 200) throw Error(body.message);
+    if (words.status !== 200) throw Error(body.message);
 
     return body;
   };
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+   handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{this.state.response}</p>
+        
+        <p className="App-intro">{this.state.words}</p>
+        <InputForm words={this.state.words} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
       </div>
     );
   }
