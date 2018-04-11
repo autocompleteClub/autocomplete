@@ -4,7 +4,7 @@ const path = require('path');
 const words = {};  // key is the word, value is frequency
 const phrases = {}; // key is the phrase, value is frequency
 
-const LEAST_PREQ_PHRASE = 5;
+const LEAST_PREQ_PHRASE = 5;  // LEAST_PREQ_PHRASE should be greater than LEAST_PREQ_WORD
 const LEAST_PREQ_WORD = 4;
 
 
